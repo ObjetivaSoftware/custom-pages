@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro 504 - Gestor Imobiliária</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .error-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .error-icon svg {
+            width: 60px;
+            height: 60px;
+            fill: white;
+        }
+
+        .clock-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+        }
+
+        .clock-hand {
+            position: absolute;
+            background: white;
+            transform-origin: bottom center;
+            left: 50%;
+            bottom: 50%;
+            border-radius: 10px;
+        }
+
+        .hour-hand {
+            width: 3px;
+            height: 20px;
+            margin-left: -1.5px;
+            animation: rotate-hour 3s linear infinite;
+        }
+
+        .minute-hand {
+            width: 2px;
+            height: 28px;
+            margin-left: -1px;
+            animation: rotate-minute 2s linear infinite;
+        }
+
+        @keyframes rotate-hour {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate-minute {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-code {
+            font-size: 72px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 16px;
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #fffbeb;
+            border-left: 4px solid #fbbf24;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            color: #2d3748;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            padding: 6px 0;
+            color: #4a5568;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .timeout-info {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .timeout-info h3 {
+            font-size: 18px;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+
+        .timeout-info p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(250, 112, 154, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(250, 112, 154, 0.6);
+        }
+
+        .btn-secondary {
+            background: #edf2f7;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .contact-info a {
+            color: #fa709a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 40px 25px;
+            }
+
+            .error-code {
+                font-size: 56px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">
+            <div class="clock-animation">
+                <div class="clock-hand hour-hand"></div>
+                <div class="clock-hand minute-hand"></div>
+            </div>
+        </div>
+        
+        <div class="error-code">504</div>
+        
+        <h1>Tempo de Resposta Excedido</h1>
+        
+        <p>O servidor demorou muito tempo para responder à sua solicitação. Isso pode ser devido a um alto volume de acessos ou uma operação que está levando mais tempo do que o esperado.</p>
+
+        <div class="timeout-info">
+            <h3>🕐 O que significa um timeout?</h3>
+            <p>Um timeout ocorre quando o servidor não consegue processar sua requisição dentro do tempo limite estabelecido. Isso não significa necessariamente que há um erro grave, mas sim que a operação está demorando mais do que o previsto.</p>
+        </div>
+
+        <div class="info-box">
+            <strong>Sugestões para resolver:</strong>
+            <ul>
+                <li>Aguarde alguns minutos antes de tentar novamente</li>
+                <li>Verifique sua conexão com a internet</li>
+                <li>Tente acessar em um horário menos movimentado</li>
+                <li>Limpe o cache e cookies do navegador</li>
+                <li>Se persistir, reporte o problema ao suporte</li>
+            </ul>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="location.reload()">
+                Tentar Novamente
+            </button>
+            <a href="https://gestorimobiliaria.com.br" class="btn btn-secondary">
+                Voltar ao Início
+            </a>
+        </div>
+
+        <div class="contact-info">
+            <p>Precisa de ajuda urgente?</p>
+            <p>Entre em contato: <a href="mailto:suporte@objetivasoftware.com.br">suporte@objetivasoftware.com.br</a></p>
+            <p>WhatsApp: <a href="https://api.whatsapp.com/send?phone=5554984311069">(54) 98431-1069</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Timer de espera recomendado antes de tentar novamente
+        let waitTime = 60; // 60 segundos
+        const showTimer = false; // Mude para true para mostrar contador
+
+        if (showTimer) {
+            const timerElement = document.createElement('div');
+            timerElement.style.cssText = 'margin-top: 20px; font-size: 14px; color: #718096;';
+            timerElement.innerHTML = `Tentando novamente em <strong>${waitTime}</strong> segundos...`;
+            document.querySelector('.button-group').after(timerElement);
+
+            const countdown = setInterval(() => {
+                waitTime--;
+                if (waitTime <= 0) {
+                    clearInterval(countdown);
+                    location.reload();
+                } else {
+                    timerElement.innerHTML = `Tentando novamente em <strong>${waitTime}</strong> segundos...`;
+                }
+            }, 1000);
+        }
+
+        // Animação suave ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.error-container').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.error-container').style.transition = 'opacity 0.6s ease';
+                document.querySelector('.error-container').style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

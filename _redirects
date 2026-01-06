@@ -1,0 +1,20 @@
+# Páginas de erro personalizadas - Erros Cliente
+/403.html 403
+/404.html 404
+
+# Páginas de erro personalizadas - Erros Servidor
+/500.html 500
+/502.html 502
+/503.html 503
+/504.html 504
+/505.html 505
+
+# Páginas de erro Cloudflare específicas
+/520.html 520
+/521.html 521
+/522.html 522
+/523.html 523
+/524.html 524
+
+# Fallback para outros erros
+/* /503.html 500-599
