@@ -1,3 +1,8 @@
+# Páginas de erro Cloudflare - Classe 1000 (Configuração)
+/1000.html 1000
+/1001.html 1001
+/1002.html 1002
+
 # Páginas de erro personalizadas - Erros Cliente
 /403.html 403
 /404.html 404

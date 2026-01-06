@@ -9,6 +9,21 @@
   Content-Type: text/html; charset=utf-8
   Cache-Control: public, max-age=3600
 
+/1000.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/1001.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
+/1002.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
+
 /403.html
   Cache-Control: no-cache, no-store, must-revalidate
   Pragma: no-cache

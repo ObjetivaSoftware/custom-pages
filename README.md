@@ -6,6 +6,11 @@ Páginas de erro personalizadas para Cloudflare Pages do **Gestor Imobiliária**
 
 Este repositório contém páginas de erro bonitas e profissionais para todos os principais códigos HTTP:
 
+### Erros de Configuração Cloudflare (1xxx)
+- **1000.html** - Erro de DNS (DNS Error)
+- **1001.html** - Erro de Resolução DNS (DNS Resolution Error)
+- **1002.html** - Domínio Restrito (Restricted Domain)
+
 ### Erros do Cliente (4xx)
 - **403.html** - Acesso Negado (Forbidden)
 - **404.html** - Página Não Encontrada (Not Found)
@@ -30,13 +35,16 @@ Este repositório contém páginas de erro bonitas e profissionais para todos os
 - ✅ **100% Responsivo** - Funciona perfeitamente em mobile, tablet e desktop
 - ✅ **Zero Dependências** - Apenas HTML, CSS e JavaScript puro
 - ✅ **Animações Suaves** - Transições e efeitos em CSS
-- ✅ **Paleta de Cores Única** - Cada erro tem seu gradiente característico
-- ✅ **Informações de Contato** - Links diretos para suporte
-- ✅ **SEO Otimizado** - Meta tags apropriadas
-- ✅ **Acessibilidade** - Seguindo boas práticas de a11y
-
 ## 🎨 Identidade Visual
 
+Cada página possui um gradiente único para facilitar identificação:
+
+| Erro | Cores | Descrição |
+|------|-------|-----------|
+| **1000** | `#667eea → #764ba2` | Roxo/Violeta - Erro DNS |
+| **1001** | `#f093fb → #f5576c` | Rosa/Vermelho - Resolução DNS |
+| **1002** | `#fa709a → #fee140` | Rosa/Amarelo - Domínio restrito |
+| **403** | `#ff6b6b → #ee5a6f` | Vermelho - Acesso negado |
 Cada página possui um gradiente único para facilitar identificação:
 
 | Erro | Cores | Descrição |
@@ -73,9 +81,12 @@ Cada página possui um gradiente único para facilitar identificação:
 
 1. Acesse Cloudflare Dashboard
 2. Vá em **Pages** > **Create a project** > **Upload assets**
-3. Faça upload de todos os arquivos (`.html`, `_redirects`, `_headers`)
-
-### Método 3: Wrangler CLI
+```
+custom-pages/
+├── 1000.html             # Cloudflare: Erro de DNS
+├── 1001.html             # Cloudflare: Erro de resolução DNS
+├── 1002.html             # Cloudflare: Domínio restrito
+├── 403.html              # Acesso negado
 ```
 custom-pages/
 ├── 403.html              # Acesso negado
@@ -107,8 +118,11 @@ custom-pages/
 
 ## 🔧 Configuração
 
-Os arquivos `_redirects` e `_headers` já estão configurados para:
-
+Acesse:
+- http://localhost:8000/1000.html
+- http://localhost:8000/1001.html
+- http://localhost:8000/1002.html
+- http://localhost:8000/403.html
 - Mapear códigos HTTP para páginas específicas
 - Definir cabeçalhos de segurança (CORS, XSS Protection, etc.)
 - Desabilitar cache para páginas de erro
